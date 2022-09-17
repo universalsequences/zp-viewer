@@ -1,0 +1,24 @@
+<svg width="667" height="97" viewBox="0 0 667 97" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M61.4117 26.0597H112.588L61.4117 69.4925H112.588" stroke="white" stroke-width="6"/>
+<path d="M133.059 26.0597H168.882" stroke="white" stroke-width="6"/>
+<path d="M133.059 66.597H167.176" stroke="white" stroke-width="6"/>
+<path d="M133.059 46.3283L167.176 46.3283" stroke="white" stroke-width="6"/>
+<path d="M234.118 44.0602C234.118 49.7589 231.069 55.3351 226.013 59.5748C220.967 63.806 214.149 66.4925 207.151 66.4925C193.08 66.4925 182.118 55.7608 182.118 44.0602C182.118 32.6005 192.805 23.2686 207.151 23.2686C214.264 23.2686 221.109 25.6197 226.118 29.4502C231.118 33.2734 234.118 38.4095 234.118 44.0602Z" stroke="white" stroke-width="6"/>
+<line y1="-3" x2="22.3742" y2="-3" transform="matrix(0.762433 0.647067 -0.762433 0.647067 213.235 55.0149)" stroke="white" stroke-width="6"/>
+<path d="M257.588 23.1642V51.3644C257.588 61.9395 262.82 65.1492 270.667 65.1492C278.514 65.1492 283.745 65.1492 283.745 65.1492C296.824 65.1492 296.824 51.3644 296.824 51.3644V23.1642" stroke="white" stroke-width="6"/>
+<path d="M368.471 69.4925V28.9552L408.559 60.0338M419.647 69.4925V28.9552" stroke="white" stroke-width="6"/>
+<line x1="486.177" y1="26.1642" x2="443.529" y2="26.1642" stroke="white" stroke-width="6"/>
+<line x1="438" y1="40.5373" x2="438" y2="55.0149" stroke="white" stroke-width="6"/>
+<line y1="-3" x2="22.3742" y2="-3" transform="matrix(0.762432 0.647068 -0.762432 0.647068 435 55.0149)" stroke="white" stroke-width="6"/>
+<line x1="452.059" y1="66.4925" x2="486.177" y2="66.4925" stroke="white" stroke-width="6"/>
+<line x1="551.412" y1="69.4925" x2="551.412" y2="41.9851" stroke="white" stroke-width="6"/>
+<line y1="-3" x2="16.7061" y2="-3" transform="matrix(0.762433 -0.647068 0.762433 0.647068 556.004 41.1164)" stroke="white" stroke-width="6"/>
+<line x1="569.765" y1="25.9552" x2="602.176" y2="25.9552" stroke="white" stroke-width="6"/>
+<line y1="-3" x2="41.7651" y2="-3" transform="matrix(0.762432 0.647068 -0.762432 0.647068 570.333 42.4677)" stroke="white" stroke-width="6"/>
+<path d="M317.294 26.0597H353.118" stroke="white" stroke-width="6"/>
+<path d="M317.294 66.597H351.412" stroke="white" stroke-width="6"/>
+<path d="M317.294 46.3284L351.412 46.3284" stroke="white" stroke-width="6"/>
+<path d="M499.823 24.6119H535.647" stroke="white" stroke-width="6"/>
+<path d="M499.823 65.1492H533.941" stroke="white" stroke-width="6"/>
+<path d="M499.823 44.8806L533.941 44.8806" stroke="white" stroke-width="6"/>
+</svg>

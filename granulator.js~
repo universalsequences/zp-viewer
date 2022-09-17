@@ -1,0 +1,66 @@
+
+const BUFFER_SIZE = 44100;
+class GranulatorNode extends AudioWorkletProcessor {
+  constructor() {
+      super();
+
+      this.delayL = new Float32Array(BUFFER_SIZE);
+      this.delayR = new Float32Array(BUFFER_SIZE);
+      this.tip = 0;
+  }
+  static get parameterDescriptors() {
+    return [{
+      name: 'amount',
+      defaultValue: 0.5,
+      minValue: 0,
+      maxValue: 10,
+      automationRate: "k-rate"
+    }];
+  }
+  process(input, output, parameters) {
+    // `input` is an array of input ports, each having multiple channels.
+    // For each channel of each input port, a Float32Array holds the audio
+    // input data.
+    // `output` is an array of output ports, each having multiple channels.
+    // For each channel of each output port, a Float32Array must be filled
+    // to output data.
+    // `parameters` is an object having a property for each parameter
+    // describing its value over time.
+    let amount = parameters["amount"][0];
+    let inputPortCount = input.length;
+    for (let portIndex = 0; portIndex < input.length; portIndex++) {
+      let channelCount = input[portIndex].length;
+      for (let channelIndex = 0; channelIndex < channelCount; channelIndex++) {
+        let sampleCount = input[portIndex][channelIndex].length;
+        for (let sampleIndex = 0; sampleIndex < sampleCount; sampleIndex++) {
+          output[0][channelIndex][sampleIndex] =
+                this.processSample(
+                    input[portIndex][channelIndex][sampleIndex],
+                    channelIndex
+                ); 
+        }
+      }
+    }
+    return true;
+  }
+
+    processSample(sample, channel) {
+        let tip = this.tip ; 
+        
+        let delay = channel == 0 ? this.delayL : this.delayR;
+        delay[tip] = sample;
+        this.tip = (this.tip + 1) % BUFFER_SIZE;
+
+        let sum = sample;
+        let counter= 1;
+        let index = (tip - 44100);
+        if (index < 0) {
+            index = BUFFER_SIZE - index;
+        }
+        let delayed = delay[index];
+        return 0.9*sample + delayed*0.1;;
+    }
+}
+
+
+registerProcessor('granulator-node', GranulatorNode);

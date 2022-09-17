@@ -1,0 +1,24 @@
+<svg width="272" height="425" viewBox="0 0 272 425" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="271.077" height="424.15" fill="white"/>
+<path d="M22.9309 111.763L36.1789 86.6403L75.9227 86.6403L62.6748 123.811M49.4268 123.811L36.1789 148.934H73.2731" stroke="black" stroke-width="6"/>
+<line x1="102.419" y1="145.934" x2="115.667" y2="145.934" stroke="black" stroke-width="6"/>
+<line y1="-3" x2="40.63" y2="-3" transform="matrix(0.326062 -0.945348 0.957379 0.288836 115.667 148.934)" stroke="black" stroke-width="6"/>
+<line x1="128.915" y1="145.934" x2="142.163" y2="145.934" stroke="black" stroke-width="6"/>
+<line x1="139.162" y1="148.934" x2="139.162" y2="99.373" stroke="black" stroke-width="6"/>
+<path d="M155.41 147.075H167.334L154.779 87.3114" stroke="black" stroke-width="6"/>
+<line x1="25.9309" y1="173.714" x2="25.9309" y2="198.495" stroke="black" stroke-width="6"/>
+<line y1="-3" x2="29.2472" y2="-3" transform="matrix(0.906408 0.422404 -0.47273 0.881207 22.9309 198.495)" stroke="black" stroke-width="6"/>
+<line y1="-3" x2="29.25" y2="-3" transform="matrix(0.90585 -0.423599 0.471468 0.881883 49.4268 235.666)" stroke="black" stroke-width="6"/>
+<line x1="72.9229" y1="223.275" x2="72.9229" y2="173.714" stroke="black" stroke-width="6"/>
+<path d="M155.411 186.105L142.163 173.714L115.667 173.714L102.419 198.495H142.163L115.667 235.666H142.163L156.332 222.784" stroke="black" stroke-width="6"/>
+<path d="M195.154 235.477L195.154 186.105L208.402 173.714M208.402 173.714H248.146M208.402 173.714L248.146 235.477" stroke="black" stroke-width="6"/>
+<line y1="-3" x2="18.1392" y2="-3" transform="matrix(-0.730362 -0.68306 0.730362 -0.68306 75.9229 272.836)" stroke="black" stroke-width="6"/>
+<line x1="62.6747" y1="263.446" x2="36.1788" y2="263.446" stroke="black" stroke-width="6"/>
+<line x1="25.9309" y1="272.836" x2="25.9309" y2="310.007" stroke="black" stroke-width="6"/>
+<line y1="-3" x2="18.1358" y2="-3" transform="matrix(0.731527 0.681812 -0.731527 0.681812 22.9309 310.007)" stroke="black" stroke-width="6"/>
+<line x1="36.179" y1="319.397" x2="62.6749" y2="319.397" stroke="black" stroke-width="6"/>
+<line y1="-3" x2="18.1394" y2="-3" transform="matrix(0.730352 -0.683071 0.730352 0.683071 62.6747 322.397)" stroke="black" stroke-width="6"/>
+<path d="M103.081 285.226L102.419 310.007L115.667 322.397M142.163 322.397L155.411 310.007M115.667 285.226H142.163M128.915 285.226L115.667 260.446M142.163 260.446L155.411 272.836" stroke="black" stroke-width="6"/>
+<path d="M195.154 322.208V272.647L208.402 260.257M208.402 272.647L234.898 285.037H248.146V260.257M208.402 285.037L248.146 322.208" stroke="black" stroke-width="6"/>
+<path d="M208.402 148.934L195.154 136.543M195.154 111.763L208.402 86.9825M234.898 86.7054L248.146 111.763M222.119 123.715L248.146 148.934H234.898" stroke="black" stroke-width="6"/>
+</svg>
