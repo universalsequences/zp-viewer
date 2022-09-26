@@ -1,7 +1,7 @@
 // This is "processor.js" file, evaluated in AudioWorkletGlobalScope upon
 // audioWorklet.addModule() call in the main global scope.
 
-const MAX_LENGTH = 41000*15;
+const MAX_LENGTH = 41000*5;
 class RecorderWorklet extends AudioWorkletProcessor {
     constructor() {
         super();
