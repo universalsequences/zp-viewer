@@ -48,6 +48,7 @@ class RecorderWorklet extends AudioWorkletProcessor {
                     data: buffer
                 }});
         } else if (event.data.message === 'flush') {
+            // when it receives a flush it sends out all that it has
             this.port.postMessage({
                 message: {
                     type: 'flush',
