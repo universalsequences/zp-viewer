@@ -40,7 +40,6 @@ class RecorderWorklet extends AudioWorkletProcessor {
         } else if (event.data.message === 'stop') {
             this.recording = false;
         } else if (event.data.message === 'get_buffer') {
-            console.log('sending get_buffer back');
             let buffer = new Float32Array(0); //this.getBuffer();
             // send message
             this.port.postMessage({
@@ -50,7 +49,6 @@ class RecorderWorklet extends AudioWorkletProcessor {
                 }});
         } else if (event.data.message === 'flush') {
             // when it receives a flush it sends out all that it has
-            console.log('received flush message');
             this.port.postMessage({
                 message: {
                     type: 'flush',
@@ -61,7 +59,6 @@ class RecorderWorklet extends AudioWorkletProcessor {
                 }});
             this.clear();
         } else if (event.data.message === "channel-count") {
-            console.log('received channel count=', event.data.count);
             this.setChannelCount(event.data.count);
         }
 
@@ -83,7 +80,6 @@ class RecorderWorklet extends AudioWorkletProcessor {
         }
 
         if (this.recLength > MAX_LENGTH) {
-            console.log('sending chunk recLength', this.recLength, MAX_LENGTH);
             this.port.postMessage({
                 message: {
                     type: 'chunk',
