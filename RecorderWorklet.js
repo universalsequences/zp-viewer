@@ -83,6 +83,7 @@ class RecorderWorklet extends AudioWorkletProcessor {
         }
 
         if (this.recLength > MAX_LENGTH) {
+            console.log('sending chunk recLength', this.recLength, MAX_LENGTH);
             this.port.postMessage({
                 message: {
                     type: 'chunk',
