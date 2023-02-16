@@ -13,6 +13,7 @@ class RecorderWorklet extends AudioWorkletProcessor {
         this.recLength = 0;
         this.recording = false;
         this.port.onmessage = this.handleMessage_.bind(this);
+        this.COUNTER=0;
     }
 
     setChannelCount(x) {
@@ -85,6 +86,14 @@ class RecorderWorklet extends AudioWorkletProcessor {
                 }
             });
             this.needsSecondAck = false;
+        }
+        this.COUNTER++;
+        if (this.COUNTER % 5000) {
+            this.port.postMessage({
+                message: {
+                    type: "worklet-ping",
+                }
+            });
         }
         if (this.recording) {
             for (var channel = 0; channel < this._channelCount; channel++){
