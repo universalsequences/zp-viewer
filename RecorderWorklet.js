@@ -5,6 +5,8 @@ const MAX_LENGTH = 41000*5;
 class RecorderWorklet extends AudioWorkletProcessor {
     constructor() {
         super();
+
+        console.log("Recorder Worklet initialized");
         
         this._channelCount = 2;
         this.recBuffers = [[], []];
@@ -35,6 +37,12 @@ class RecorderWorklet extends AudioWorkletProcessor {
         if (event.data.message === 'record') {
             //this.clear();
             this.recording = true;
+            this.port.postMessage({
+                message: {
+                    type: "record_acknowledged",
+                }
+            });
+            this.needsSecondAck = true;
         } else if (event.data.message === 'clear') {
             this.clear();
         } else if (event.data.message === 'stop') {
@@ -70,6 +78,14 @@ class RecorderWorklet extends AudioWorkletProcessor {
     
     process(inputs, outputs, parameters) {
         let input = inputs[0];
+        if (this.needsSecondAck) {
+            this.port.postMessage({
+                message: {
+                    type: "record_acknowledged2",
+                }
+            });
+            this.needsSecondAck = false;
+        }
         if (this.recording) {
             for (var channel = 0; channel < this._channelCount; channel++){
                 let arr = new Float32Array(input[channel].length);
