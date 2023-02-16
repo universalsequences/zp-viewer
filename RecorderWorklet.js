@@ -88,7 +88,7 @@ class RecorderWorklet extends AudioWorkletProcessor {
             this.needsSecondAck = false;
         }
         this.COUNTER++;
-        if (this.COUNTER % 5000 === 0) {
+        if (this.COUNTER % 100 === 0) {
             this.port.postMessage({
                 message: {
                     type: "worklet-ping",
