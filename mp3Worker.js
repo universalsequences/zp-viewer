@@ -6,6 +6,7 @@ class Decoder {
     constructor(wasm, data) {
         this.wasm = wasm;
         this.wasm.decoder_init();
+        console.log("INITIALIZING ");
         // Set `data` in Wasm memory.
         this.wasm.decoder_set_mp3_data_size(data.byteLength);
         const mp3DataInWasm = new Uint8Array(this.wasm.memory.buffer, this.wasm.decoder_mp3_data_offset(), this.wasm.decoder_mp3_data_size());
@@ -71,7 +72,9 @@ async function createDecoder(data, wasmUrl) {
 }
 
 let decoder = null;
+let running = false;
 const decodeMP3 = async (mp3Data, isNFT) => {
+    running=true;
     let url = isNFT ? 'decoder.opt.wasm' : '/decoder.opt.wasm';
     if (!decoder) {
         decoder = await createDecoder(mp3Data, url);
@@ -87,13 +90,21 @@ const decodeMP3 = async (mp3Data, isNFT) => {
     sampleRate = results.samplingRate;
     merged.set(results.pcm, position);
     position+=results.pcm.length;
+    running=false;
     return {decoded: merged, sampleRate, position};
 };
 
-onmessage = function(e) {
+onmessage = async function(e) {
     let {id, mp3Data, isNFT} = e.data;
+    while (running) {
+        // only decode one at a time so we can use the same memory
+        await sleep(5);
+    }
+ 
     decodeMP3(mp3Data, isNFT).then(
-        ({decoded, sampleRate, position}) => {
-            postMessage({decoded, sampleRate, position, id});
+        async ({decoded, sampleRate, position}) => {
+           postMessage({decoded, sampleRate, position, id});
         });
 }
+
+const sleep = (x) => new Promise((resolve) => setTimeout(resolve, x));
