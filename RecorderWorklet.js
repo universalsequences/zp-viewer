@@ -1,5 +1,4 @@
 // This is "processor.js" file, evaluated in AudioWorkletGlobalScope upon
-
 // audioWorklet.addModule() call in the main global scope.
 
 const MAX_LENGTH = 41000*5;
