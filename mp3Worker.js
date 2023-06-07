@@ -81,12 +81,15 @@ const decodeMP3 = async (mp3Data, isNFT) => {
     } else {
         decoder.setData(mp3Data);
     }
-    const merged = new Uint16Array(mp3Data.length*6);
     let position=0;
     let sampleRate;
     decoder.seek(0);
     let counter=0;
-    const results = decoder.decode(60*5.5);
+    let estimate = (mp3Data.length * 3) / 44100;
+    console.log('estimate minutes=', estimate);
+    const results = decoder.decode(Math.min(60*5.5, estimate));
+    const merged = new Uint16Array(results.pcm.length);
+    console.log('results.length = %s merged.length=%s', results.pcm.length, merged.length);
     sampleRate = results.samplingRate;
     merged.set(results.pcm, position);
     position+=results.pcm.length;

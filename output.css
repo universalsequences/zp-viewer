@@ -795,6 +795,11 @@ video {
   margin-right: 0.5rem;
 }
 
+.mx-1 {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
 .mr-3 {
   margin-right: 0.75rem;
 }
@@ -881,6 +886,10 @@ video {
 
 .mt-32 {
   margin-top: 8rem;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
 }
 
 .block {
@@ -999,6 +1008,10 @@ video {
 
 .w-1 {
   width: 0.25rem;
+}
+
+.w-24 {
+  width: 6rem;
 }
 
 .max-w-full {
@@ -2632,4 +2645,14 @@ select:-webkit-autofill:focus {
   font-weight: normal;
 
   font-style: normal;
+}
+
+@media (min-width: 768px) {
+  .md\:h-16 {
+    height: 4rem;
+  }
+
+  .md\:w-16 {
+    width: 4rem;
+  }
 }
