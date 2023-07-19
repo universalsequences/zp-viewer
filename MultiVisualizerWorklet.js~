@@ -1,0 +1,35 @@
+// This is "processor.js" file, evaluated in AudioWorkletGlobalScope upon
+// audioWorklet.addModule() call in the main global scope.
+
+class MultiVisualizerWorklet extends AudioWorkletProcessor {
+    constructor() {
+        super();
+
+        this.sampleCount = 0;
+
+        this.maxValues = [0,0,0,0,0,0,0,0,0,0,0,0];
+    }
+
+    process(inputs, outputs, parameters) {
+        const input = inputs[0];
+
+        let sampleRate = 44100; //this.context.sampleRate;
+
+        for (let j = 0; j < input[0].length; j++) {
+            this.sampleCount++;
+            for (let i = 0; i < input.length; i++) {
+                if (Math.abs(input[i][j]) > Math.abs(this.maxValues[i])) {
+                    this.maxValue = input[i][j];
+                }
+                if (this.sampleCount >= sampleRate * 0.005) {
+                    this.port.postMessage(this.maxValues);
+                    this.maxValues[i] = 0;
+                    this.sampleCount = 0;
+                }
+            }
+        }
+        return true;
+    }
+}
+
+registerProcessor('multi-visualizer-processor', MultiVisualizerWorklet);
