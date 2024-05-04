@@ -18,19 +18,31 @@ class RecorderWorklet extends AudioWorkletProcessor {
 
     setChannelCount(x) {
         this._channelCount = x;
+        this.recBuffers = [];
+        for (let i=0; i < x; i++) {
+            this.recBuffers.push([]);
+            this.recBuffers.push([]);
+        }
+        /*
         if (x === 2) {
             this.recBuffers = [[], []];
         } else {
             this.recBuffers = [[]];
         }
+        */
     }
     
     
     clear() {
+        for (let i=0; i < this.recBuffers.length; i++) {
+            this.recBuffers[i].length = 0;
+        }
+        /*
         this.recBuffers[0].length = 0;
         if (this._channelCount === 2) {
             this.recBuffers[1].length = 0;
         }
+        */
         this.recLength = 0;
     }
 
@@ -78,7 +90,6 @@ class RecorderWorklet extends AudioWorkletProcessor {
     }
     
     process(inputs, outputs, parameters) {
-        let input = inputs[0];
         if (this.needsSecondAck) {
             this.port.postMessage({
                 message: {
@@ -96,12 +107,18 @@ class RecorderWorklet extends AudioWorkletProcessor {
             });
         }
         if (this.recording) {
-            for (var channel = 0; channel < this._channelCount; channel++){
-                let arr = new Float32Array(input[channel].length);
-                arr.set(input[channel], 0);
-                this.recBuffers[channel].push(arr);
+            for (let i=0; i < inputs.length; i++) {
+                let input = inputs[i];
+                // console.log('i=%s input=', i, input);
+                for (var channel = 0; channel < 2; channel++){
+                    let arr = new Float32Array(input[channel % input.length].length);
+                    arr.set(input[channel % input.length], 0);
+                    this.recBuffers[2*i+channel].push(arr);
+                }
+                if (i===0) {
+                    this.recLength += input[0].length;
+                }
             }
-            this.recLength += input[0].length;
         }
 
         if (this.recLength > MAX_LENGTH) {
